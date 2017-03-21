@@ -1,0 +1,46 @@
+#paging{
+	margin-left: 700px;
+}
+
+#carAction{
+	float:right;
+	margin-right: 20px;
+}
+
+#carTitle{
+	color:#000;
+	background-color: #ddd;
+	height:52px;
+}
+
+.noSee{
+	display: none;
+}
+
+.btn-right{
+	float:right;
+	margin-right:5px;
+}
+
+.btn-group{
+	margin-top: 5px;
+}
+
+.btn a{
+	color:#fff;
+}
+
+.selectIN{
+	margin-right: 15px;
+	font-size: 24px;
+	float:left;
+	text-align: right;
+}
+
+.panel-heading{
+	font-size: 30px;
+}
+
+.input-group{
+	margin-bottom: 20px;
+}

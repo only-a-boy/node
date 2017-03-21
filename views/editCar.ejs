@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/stylesheets/basic.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<script src="javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+	<title><%= title %></title>
+</head>
+</head>
+<body>
+<% include header %>
+
+<form class="form-horizontal" action="/updateCar" method="post">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">车辆序号:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"><%= JSON.parse(carInfo)[0].car_id %></p>
+    </div>
+  </div>
+    
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">VIN：</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"><%= JSON.parse(carInfo)[0].vin %></p>
+      <input type="hidden" class="form-control" id="updateVin" name="updateVin" value="<%= JSON.parse(carInfo)[0].vin %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">发动机号：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateEngineNo" name="updateEngineNo" value="<%= JSON.parse(carInfo)[0].engine_no %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">车型：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateModel" name="updateModel" value="<%= JSON.parse(carInfo)[0].model %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">颜色：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateColor" name="updateColor" value="<%= JSON.parse(carInfo)[0].color %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">地址：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateAddress" name="updateAddress" value="<%= JSON.parse(carInfo)[0].address %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">车牌号：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateCarCard" name="updateCarCard" value="<%= JSON.parse(carInfo)[0].car_card %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">城市名：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateCityName" name="updateCityName" value="<%= JSON.parse(carInfo)[0].city_name %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">新产品年度：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateModelYear" name="updateModelYear" value="<%= JSON.parse(carInfo)[0].model_year %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">购车日期：</label>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" id="updatePurchaseDate" name="updatePurchaseDate" value="<%= JSON.parse(carInfo)[0].purchase_date %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">车辆类型：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateCarType" name="updateCarType" value="<%= JSON.parse(carInfo)[0].car_type %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">备注：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateMemo" name="updateMemo" value="<%= JSON.parse(carInfo)[0].memo %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">状态：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateStatus" name="updateStatus" value="<%= JSON.parse(carInfo)[0].status %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">创建人：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateCreateUserId" name="updateCreateUserId" value="<%= JSON.parse(carInfo)[0].create_user_id %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">创建时间：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updateCreateTime" name="updateCreateTime" value="<%= JSON.parse(carInfo)[0].create_time %>">
+    </div>
+    <button class="btn btn-default" type="submit">确认修改</button>
+  </div>
+</form>
+
+
+
+
+<% include footer %>
+
+</body>
+</html>

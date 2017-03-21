@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel='stylesheet' href='/stylesheets/header.css'> 
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+  	<script src="/javascripts/bootstrap.min.js"></script>
+</head>
+</head>
+<body>
+
+<header id="header">
+	<nav class="navbar navbar-default" role="navigation"> 
+		<div class="container-fluid"> 
+		    <div class="navbar-header"> 
+		        <a class="navbar-brand" href="/home">网站导航
+					<img src="/images/logo.jpg">
+		        </a> 
+		    </div> 
+		    <ul  class="nav navbar-nav navbar-right"> 
+		        <li><a href="/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li> 
+		        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li> 
+		        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> 注销</a></li> 
+		    </ul> 
+		    </ul> 
+		</div> 
+	</nav>
+	<div id="header-page">
+		<ul id="navigation" class="nav nav-pills">
+			<li class="active"><a href="/home">首页</a></li>
+			<li><a href="/users">用户</a></li>
+			<li><a href="/car">车辆</a></li>
+			<li><a href="#">页面一</a></li>
+			<li><a href="#">页面二</a></li>
+			<li><a href="#">页面三</a></li>		
+		</ul>
+	</div>
+
+</header>
+
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/vue.js"></script>
+<script>
+	$(function() {
+        $("#navigation").find("li").each(function() {
+            var a = $(this).find("a:first")[0];
+            if ($(a).attr("href") === location.pathname) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link href="/stylesheets/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+ 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+  	<script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<%- include header %>
+<div class="containerSelf">
+	<nav>
+		<span>
+			<a href="/" title="首页">首页</a>
+		</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>
+			<a href="/login" title="登录">登录</a>
+		</span>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<span>
+			<a href="/register" title="注册">注册</a>
+		</span>
+	</nav>
+</div>
+<%- include footer %>
+
+</body>
+</html>

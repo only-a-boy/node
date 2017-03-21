@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+ 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+  	<script src="/javascripts/bootstrap.min.js"></script>
+</head>
+</head>
+<body>
+<% include header %>
+
+<form class="form-horizontal col-sm-offset-1" action="/updateUser" method="post">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">用户序号:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"><%= JSON.parse(user)[0].id %></p>
+    </div>
+  </div>
+    
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">用户名：</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"><%= JSON.parse(user)[0].username %></p>
+      <input type="hidden" class="form-control" id="updateUsername" name="updateUsername" value="<%= JSON.parse(user)[0].username %>">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-4 control-label">密码：</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" id="updatePassword" name="updatePassword" value="<%= JSON.parse(user)[0].password %>">
+    </div>
+  </div>
+
+    <button class="btn btn-default col-sm-offset-5" type="submit">确认修改</button>
+</form>
+
+
+<% include footer %>
+
+</body>
+</html>

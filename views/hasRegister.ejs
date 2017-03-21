@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link href="/stylesheets/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+ 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+  	<script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<%- include header %>
+<h1>恭喜你注册成功</h1>
+<h2>您的用户名是:<%= user %></h2>
+<h2>您的密码是：<%= password %></h2>
+<%- include footer %>
+
+</body>
+</html>

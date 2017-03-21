@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/users.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/basic.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+ 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+	<title><%= title %></title>
+</head>
+</head>
+<body>
+<% include header %>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">用户搜索</div>
+  <div class="panel-body">
+
+    <form action="/selectUser" method="POST">
+      <div class="input-group col-sm-4 col-sm-offset-4">
+        <span id="sizing-addon2">用户名：</span>
+        <input type="text" class="form-control" style="width:60%;border-radius:5px;" id="selectUser" name="selectUser" placeholder="Username" aria-describedby="sizing-addon2">
+      </div>
+      <button type="submit" class="btn col-sm-1 btn-primary" style="float:right;margin-right:80px;">用户查询</button>
+    </form>
+
+  </div>
+</div>
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">用户信息
+
+    <div id="UserAction">
+      <div class="btn-right">
+        <form action="/delUser" method="POST" id="delUser">
+          <input type="hidden" id="deleteUser" name="deleteUser">
+          <button type="button" class="btn btn-danger" id="delClick">删除用户</button>
+        </form>
+      </div>
+
+      <div class="btn-right">
+        <form action="/editUser" method="POST" id="editUser">
+          <input type="hidden" id="EUser" name="EUser">
+          <button type="button" class="btn btn-warning" id="editClick">修改信息</button>
+        </form>
+      </div>
+
+      <div class="btn-right">
+        <form action="/viewUser" method="POST" id="viewUser">
+          <input type="hidden" id="VUser" name="VUser">
+          <button type="button" class="btn btn-info" id="viewClick">查看详情</button>
+        </form>  
+      </div>
+
+      <div class="btn-right">
+        <form>
+          <button type="button" class="btn btn-success"><a href="/addUser">新增用户</a></button>
+        </form>
+      </div> 
+    </div> 
+
+  </div>
+
+  <div class="panel-body">
+
+    <table id="userInfo" class="table table-hover">
+      <thead>
+        <tr>
+          <th><input type="checkbox" onclick="swapCheck()"></th>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>密码</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<JSON.parse(user).length;i++){%>
+          <tr>
+            <td><input type="checkbox" name="userCheckBox" value="<%= JSON.parse(user)[i].username %>"></td>
+            <td><%= JSON.parse(user)[i].id %></td>
+            <td><%= JSON.parse(user)[i].username %></td>
+            <td><%= JSON.parse(user)[i].password %></td>
+          </tr>
+        <%}%>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<ul id="paging">
+  <a id="btn0"></a>
+  <input id="pageSize" type="text" size="1" maxlength="4" value="getDefaultValue()"/><a> 条 </a> <a href="#" id="pageSizeSet">设置</a> 
+  <a id="count"></a> 
+  <a href="#" id="btn1">首页</a>
+  <a href="#" id="btn2">上一页</a>
+  <a href="#" id="btn3">下一页</a>
+  <a href="#" id="btn4">尾页</a> 
+  <a>转到 </a>
+  <input id="changePage" type="text" size="1" maxlength="4"/>
+  <a>页 </a>
+  <a href="#" id="btn5">跳转</a>
+</ul>
+
+
+<!-- <div id="user-list">
+  <input
+    v-model="newUserText"
+    v-on:keyup.enter="addNewUser"
+    placeholder="Add a New User"
+  >
+  <ul>
+    <li
+      is="user-item"
+      v-for="(user, index) in users"
+      v-bind:title="user"
+      v-on:remove="users.splice(index, 1)"
+    ></li>
+  </ul>
+</div> -->
+
+<!-- <div class="container">
+  <form  class=" col-sm-offset-4 col-sm-4 form-horizontal" role="form" action="/editUsers" method="post">
+    <button id = "editUsers" type="submit" class="btn btn-primary">修改用户</button>
+  </form>
+</div>
+ -->
+
+<% include footer %>
+
+<script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/vue.js"></script>
+<script type="text/javascript">
+ var isCheckAll = false;  
+  function swapCheck() {  
+      if (isCheckAll) {  
+          $("input[type='checkbox']").each(function() {  
+              this.checked = false;  
+          });  
+          isCheckAll = false;  
+      } else {  
+          $("input[type='checkbox']").each(function() {  
+              this.checked = true;  
+          });  
+          isCheckAll = true;  
+      }  
+  }  
+
+
+  var pageSize = 5;    
+  var curPage = 0;        
+  var lastPage;       
+  var direct = 0;       
+  var len;            
+  var page;           
+  var begin;
+  var end;
+
+               
+$(document).ready(function display(){  
+    len = $("#userInfo tr").length - 1;    
+    page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;
+    curPage = 1;    
+    displayPage(1);
+
+
+    document.getElementById("btn0").innerHTML = "当前 " + curPage + "/" + page + " 页    每页 "
+    document.getElementById("count").innerHTML = "数据总量 " + len + "   "  
+    document.getElementById("pageSize").value = pageSize;
+
+    $("#btn1").click(function firstPage(){    
+        curPage = 1;
+        direct = 0;
+        displayPage();
+    });
+    $("#btn2").click(function frontPage(){   
+        direct =- 1;
+        displayPage();
+    });
+    $("#btn3").click(function nextPage(){   
+        direct = 1;
+        displayPage();
+    });
+    $("#btn4").click(function lastPage(){  
+        curPage = page;
+        direct = 0;
+        displayPage();
+    });
+    $("#btn5").click(function changePage(){    
+        curPage = document.getElementById("changePage").value * 1;
+        if (!/^[1-9]\d*$/.test(curPage)) {
+            alert("请输入正整数");
+            return ;
+        }
+        if (curPage > page) {
+            alert("超出数据页面");
+            return ;
+        }
+        direct = 0;
+        displayPage();
+    });
+
+   
+    $("#pageSizeSet").click(function setPageSize(){    // 设置每页显示多少条记录
+        pageSize = document.getElementById("pageSize").value;    //每页显示的记录条数
+        if (!/^[1-9]\d*$/.test(pageSize)) {
+            alert("请输入正整数");
+            return ;
+        }
+        len = $("#userInfo tr").length - 1;
+        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+        curPage = 1;       
+        direct = 0;       
+        displayPage();
+    });
+});
+
+function displayPage(){
+    if(curPage <= 1 && direct == -1){
+        direct = 0;
+        alert("已经是第一页了");
+        return;
+    } else if (curPage >= page && direct == 1) {
+        direct = 0;
+        alert("已经是最后一页了");
+        return ;
+    }
+
+    lastPage = curPage;
+
+    if (len > pageSize) {
+        curPage = ((curPage + direct + len) % len);
+    } else {
+        curPage = 1;
+    }
+
+    if(curPage == 0){
+      curPage = page;
+    }
+
+   
+   document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";       
+
+    begin = (curPage - 1) * pageSize + 1;
+    end = begin + 1 * pageSize - 1;  
+
+   
+    if(end > len ){
+      end = len;
+    }
+    $("#userInfo tr").hide();    
+    $("#userInfo tr").each(function(i){    
+        if((i >= begin && i <= end) || i == 0 )
+            $(this).show();
+    });
+
+ }
+
+
+ function delCheck(){
+  var userCheckBox = document.getElementsByName("userCheckBox");
+  var s = "";
+  var checkCount = 0;
+  for(var i = 0;i < userCheckBox.length;i++){
+    if(userCheckBox[i].checked){
+      s += userCheckBox[i].value
+      checkCount++;
+    }
+  }
+  if(checkCount == 1){
+    document.getElementById("deleteUser").value = s
+    document.getElementById("delUser").submit();
+  }else if(checkCount == 0){
+    alert("您还没有选择用户")
+  }else{
+    alert("请只选择一个用户")
+  }
+ }
+
+  function editCheck(){
+  var userCheckBox = document.getElementsByName("userCheckBox");
+  var s = "";
+  var checkCount = 0;
+  for(var i = 0;i < userCheckBox.length;i++){
+    if(userCheckBox[i].checked){
+      s += userCheckBox[i].value
+      checkCount++;
+    }
+  }
+  if(checkCount == 1){
+    document.getElementById("EUser").value = s
+    document.getElementById("editUser").submit();
+  }else if(checkCount == 0){
+    alert("您还没有选择用户")
+  }else{
+    alert("请只选择一个用户")
+  }
+ }
+
+  function viewCheck(){
+  var userCheckBox = document.getElementsByName("userCheckBox");
+  var s = "";
+  var checkCount = 0;
+  for(var i = 0;i < userCheckBox.length;i++){
+    if(userCheckBox[i].checked){
+      s += userCheckBox[i].value
+      checkCount++;
+    }
+  }
+  if(checkCount == 1){
+    document.getElementById("VUser").value = s
+    document.getElementById("viewUser").submit();
+  }else if(checkCount == 0){
+    alert("您还没有选择用户")
+  }else{
+    alert("请只选择一个用户")
+  }
+ }
+
+$("#viewClick").click(function() {
+
+  var userCheckBox = document.getElementsByName("userCheckBox");
+    var s = "";
+    var checkCount = 0;
+    for(var i = 0;i < userCheckBox.length;i++){
+      if(userCheckBox[i].checked){
+        s += userCheckBox[i].value
+        checkCount++;
+      }
+    }
+    if(checkCount == 1){
+
+      $.ajax({
+        url: "/viewUser",
+        data: {
+            VUser: s
+        },
+        async: true,  
+        cache: false,  
+        type: "POST",
+        dataType: "text",   
+        success: function(result){ 
+            if(result){
+              // var data = {
+              //   id : JSON.parse(result)[0].id,
+              //   username : JSON.parse(result)[0].username,
+              //   password : JSON.parse(result)[0].password, 
+              // };
+              var id = JSON.parse(result)[0].id  
+              var username = JSON.parse(result)[0].username
+              var password = JSON.parse(result)[0].password                  
+              alert(id + username + password); 
+              location.href='/viewUser?id='+id;    //跳转页面传参
+            }else{
+                alert("数据传输有错误！");
+            }
+        }
+      });
+   
+     
+    }else if(checkCount == 0){
+      alert("您还没有选择用户")
+    }else{
+      alert("请只选择一个用户")
+    }
+  });
+
+
+	// var test = new Vue({
+	// 	el:'#test',
+	// 	data:$('#usersList').serialize();
+	// })
+
+
+	// var app2 = new Vue({
+	// 	el:'#app2',
+	// 	data:{
+	// 		message: '你的登录时间为： ' + new Date()
+	// 	}
+	// })
+
+	// var app3 = new Vue({
+	// 	el:'#app3',
+	// 	data:{
+	// 		todos:[
+	// 			{ text:'1'},
+	// 			{ text:'2'},
+	// 			{ text:'3'}
+	// 		]
+	// 	}
+	// })
+
+
+// Vue.component('user-item', {
+//   template: '\
+//     <li>\
+//       {{ title }}\
+//       <button v-on:click="$emit(\'remove\')">X</button>\
+//     </li>\
+//   ',
+//   props: ['title']
+// })
+
+// new Vue({
+//   el: '#user-list',
+//   data: {
+//     newUserText: '',
+//     users: [
+//       user
+//     ]
+//   },
+//   methods: {
+//     addNewUser: function () {
+//       this.users.push(this.newUserText)
+//       this.newUserText = ''
+//     }
+//   }
+// })
+
+</script>
+
+</body>
+</html>

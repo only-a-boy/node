@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<%- include header %>
+ <div class="container">
+ <h1>这里是register页面</h1>
+      <form id="formRegister" class=" col-sm-offset-4 col-sm-4 form-horizontal" role="form" action="/register" method="post">
+          <fieldset>
+  
+              <div class="form-group">
+                  <label class="col-sm-3 control-label" for="username">用户名</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="password2">密码</label>
+                 <div class="col-sm-9">
+                     <input type="password" class="form-control" id="password2" name="password2" placeholder="密码" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <div class="col-sm-offset-3 col-sm-9">
+                     <button id = "register" type="submit" class="btn btn-primary">注册</button>
+                 </div>
+             </div>
+         </fieldset>
+     </form>
+ </div>
+ <%- include footer %>
+
+ <!-- <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+ <script type="text/javascript">
+     $("#register").click(function(){
+        $.ajax({
+            url: '/register',
+            type: 'post',
+            data: $("#formRegister").serialize(),
+            success: function(data) {
+                console.log(data);
+                window.location.href ='127.0.0.1:3000';
+                alert("注册成功")
+            }
+        })      
+    })
+ </script>
+ -->
+</body>
+</html>

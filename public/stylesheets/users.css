@@ -1,0 +1,41 @@
+#user-list{
+	margin-top: 30px;
+	margin-left: 300px;
+}
+
+#paging{
+	margin-left: 700px;
+}
+
+.btn-right{
+	float:right;
+	margin-right:5px;
+}
+
+.btn-group{
+	margin-top: 5px;
+}
+
+.btn a{
+	color:#fff;
+}
+
+#UserAction{
+	float:right;
+	margin-right: 20px;
+}
+
+#userTitle{
+	color:#000;
+	background-color: #ddd;
+	height:52px;
+}
+
+#sizing-addon2{
+	font-size: 24px;
+	float:left;
+}
+
+.panel-heading{
+	font-size: 30px;
+}

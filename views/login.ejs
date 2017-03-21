@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+<%- include header %>
+<h1>请登录</h1>
+  <div class="container">
+      <form id="formLogin" class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" action="/login" method="post">
+          <fieldset>
+          <% if(locals.islogin) { %>
+             用户：<h3> <%= test %></h3>已经登陆。<br>
+             <a class="btn" href="/logout">登出</a>
+              <% } else{ %>
+              <div class="form-group">
+                 <label class="col-sm-3 control-label" for="username">用户名</label>
+                 <div class="col-sm-9">
+                     <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <label class="col-sm-3 control-label" for="password">密码</label>
+                 <div class="col-sm-9">
+                     <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
+                 </div>
+             </div>
+             <div class="form-group">
+                 <div class="col-sm-offset-3 col-sm-9">
+                     <button id="login" type="submit" class="btn btn-primary">登录</button>
+                 </div>
+             </div>
+             <% } %>
+         </fieldset>
+     </form>
+ </div>
+ <%- include footer %>
+
+<!-- <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+  $("#login").click(function(){
+        $.ajax({
+            url: '/hasLogin',
+            type: 'post',
+            data: $('#formLogin').serialize(),
+            success: function() {
+                alert(11111)
+                window.location.href = '/hasLogin'
+                // if(data.status == 99999) {
+                //     alert("3秒后跳转到首页");
+                //     setTimeout(function() {
+                //         location.href='127.0.0.1:3000';
+                //     },3000)
+                // }else {
+                //     alert('登录名或密码错误')
+                // }
+            }
+        })      
+    })
+</script> -->
+</body>
+</html>
