@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
-var sql = require('dao/dbConnect');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var mysql = require('mysql');
+// var sql = require('./routes/dao/dbConnect');
 
 router.route('/hasLogin')
 	.get(function(req,res){

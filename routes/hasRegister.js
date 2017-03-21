@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser')
+// var sql = require('./routes/dao/dbConnect');
 
 var urlencodedParser = bodyParser.urlencoded({ extended : false})
 

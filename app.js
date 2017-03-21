@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
+var sql = require('./routes/dao/dbConnect');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
@@ -50,6 +51,7 @@ app.use(session({
 	saveUninitialized:true
 }));
 
+// app.use('/',sql);
 app.use('/',index);
 app.use('/',users);
 app.use('/',login);
