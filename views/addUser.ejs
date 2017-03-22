@@ -28,7 +28,7 @@
     <input type="file" id="inputFile">
     <p class="help-block">上传你的照片</p>
   </div> -->
-  <button type="type" class="btn btn-default" id="addUser">Submit</button>
+  <button type="type" class="btn btn-default" id="addUser">确定</button>
 </form>
 
 <% include footer %>
@@ -45,13 +45,13 @@ $("#addUser").click(function() {
     type: "POST",
     dataType: "text",   
     success: function(result){ 
-        if(result){
-          alert("新增用户成功")
-          location.href="/users";
-        }else{
-          alert("数据传输错误！");
+            if(result){
+              alert("新增用户成功")
+              location.href="/users" 
+            }else{
+                alert("数据传输有错误！");
+            }
         }
-      }
     })
 })
 </script>

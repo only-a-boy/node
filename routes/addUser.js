@@ -15,20 +15,22 @@ router.route('/addUser')
 	.post(function(req,res){
 		client = sql.connect();
 		sql.selectUser(client,req.body.username,function(result){
-			if(result[0] !== undefined){
-				res.send(false);
-			}
-		})
+			if(result[0] == undefined){
+				client = sql.connect();
+				sql.insertUser(client,req.body.username,req.body.password,function(err){
+					if(err){
+						res.send(err)
+					}else{
+						res.send(true)
+					}
+				})	
+			}else{
 
-		client = sql.connect();
-		sql.insertUser(client,req.body.username,req.body.password,function(err){
-			if(err){
-				return err;
 			}
-		})
-			
-	res.send(true)	
-	});
+		});
+	})
 
 
 module.exports = router;
+
+	
