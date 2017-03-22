@@ -19,13 +19,13 @@ router.route('/addUser')
 				client = sql.connect();
 				sql.insertUser(client,req.body.username,req.body.password,function(err){
 					if(err){
-						res.send(err)
+						res.send(false)
 					}else{
 						res.send(true)
 					}
 				})	
 			}else{
-
+				res.send(false)
 			}
 		});
 	})

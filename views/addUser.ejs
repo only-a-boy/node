@@ -33,7 +33,8 @@
 
 <% include footer %>
 <script>
-$("#addUser").click(function() {
+$("#addUser").click(function(e) {
+  e.preventDefault();
   $.ajax({
     url: "/addUser",
     data: {
@@ -45,11 +46,11 @@ $("#addUser").click(function() {
     type: "POST",
     dataType: "text",   
     success: function(result){ 
-            if(result){
+            if(result == "true"){
               alert("新增用户成功")
               location.href="/users" 
             }else{
-                alert("数据传输有错误！");
+                alert("已有此用户名或用户名为空");
             }
         }
     })
