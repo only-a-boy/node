@@ -13,7 +13,7 @@
   <div class="form-group">
     <label class="col-sm-4 control-label">用户序号:</label>
     <div class="col-sm-2">
-      <p class="form-control-static"><%= JSON.parse(user)[0].id %></p>
+      <p class="form-control-static" id="id"></p>
     </div>
   </div>
     
@@ -21,23 +21,65 @@
   <div class="form-group">
     <label class="col-sm-4 control-label">用户名：</label>
     <div class="col-sm-2">
-      <p class="form-control-static"><%= JSON.parse(user)[0].username %></p>
-      <input type="hidden" class="form-control" id="updateUsername" name="updateUsername" value="<%= JSON.parse(user)[0].username %>">
+      <p class="form-control-static" id="username"></p>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-4 control-label">密码：</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control" id="updatePassword" name="updatePassword" value="<%= JSON.parse(user)[0].password %>">
+      <input type="text" class="form-control" id="updatePassword" name="updatePassword">
     </div>
   </div>
 
-    <button class="btn btn-default col-sm-offset-5" type="submit">确认修改</button>
+    <button class="btn btn-default col-sm-offset-5" type="button" id="confirm">确认修改</button>
 </form>
 
 
 <% include footer %>
+
+<script>
+$.getUrlParam = function (name) {
+     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if (r != null) return unescape(r[2]); return null;
+}                
+
+var data = $.getUrlParam('data');
+    data = JSON.parse(data);
+var id = data.id
+var username = data.username
+var password = data.password
+
+document.getElementById("id").innerHTML = id;
+document.getElementById("username").innerHTML = username;
+document.getElementById("updatePassword").value = password;
+
+$("#confirm").click(function() {
+
+      $.ajax({
+        url: "/updateUser",
+        data: {
+            username: username,
+            password:document.getElementById("updatePassword").value
+        },
+        async: true,  
+        cache: false,  
+        type: "POST",
+        dataType: "text",   
+        success: function(result){ 
+            if(result){
+              alert("修改成功")
+              location.href="/users";   
+            }else{
+                alert("数据传输有错误！");
+            }
+        }
+      });      
+    });
+
+
+</script>
 
 </body>
 </html>

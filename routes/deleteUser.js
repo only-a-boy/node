@@ -8,19 +8,14 @@ var sql = require('dao/dbConnect');
 // var sql = require('./routes/dao/dbConnect');
 
 router.route('/delUser')
-	.get(function(req,res){
-		
-	})
-
 	.post(function(req,res){
 		client = sql.connect();
-		sql.deleteUser(client,req.body.deleteUser,function(err){
-			client = sql.connect();
-			sql.selectAllUsers(client,function(result){
-				var userList = JSON.stringify(result)
-				res.render('users',{ title:'删除之后用户',user:userList });
-				console.log('删除用户成功')				
-			})
+		sql.deleteUser(client,req.body.username,function(err){
+			if(err){
+				res.send(err)
+			}else{
+				res.send(true)
+			}
 		})
 	})
 

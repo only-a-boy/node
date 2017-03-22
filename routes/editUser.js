@@ -9,13 +9,15 @@ var sql = require('dao/dbConnect');
 
 router.route('/editUser')
 	.get(function(req,res){
+		res.render("editUser",{ title:'欢迎进入用户修改界面' })
 	})
 
 	.post(function(req,res){
 		client = sql.connect();
-		sql.selectUser(client,req.body.EUser,function(result){
+		sql.selectUser(client,req.body.username,function(result){
 			var userList = JSON.stringify(result)
-			res.render('editUser',{ title:'修改车辆',user:userList });
+			res.send(userList)
+			console.log('查看用户成功')	
 		})
 	})
 

@@ -9,7 +9,6 @@ var sql = require('dao/dbConnect');
 var urlencodedParser = bodyParser.urlencoded({ extended : false})
 
 
-// get和post 实现部分
 
 router.get('/', function(req, res) {
 	if(req.cookies.islogin){
@@ -28,21 +27,6 @@ router.get('/logout', function(req, res) {
 	req.session.destroy();
    res.redirect('/');
 });
-
-router.post('/deleteUser',function(req,res){
-	client = sql.connect();
-	sql.deleteUsers(client,req.body.id,function(err){
-		if(err){
-			throw err;
-		}
-	});
-	console.log("删除成功");
-})
-
-router.post('/deleteCar',function(req,res){
-	client = sql.connect();
-	sql.deleteCar();
-})
 
 
 router.get("/session",function(req, res) {
