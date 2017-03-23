@@ -136,20 +136,20 @@
 <% include footer %>
 <script>
 
-  var isCheckAll = false;  
-  function swapCheck() {  
-      if (isCheckAll) {  
-          $("input[type='checkbox']").each(function() {  
-              this.checked = false;  
-          });  
-          isCheckAll = false;  
-      } else {  
-          $("input[type='checkbox']").each(function() {  
-              this.checked = true;  
-          });  
-          isCheckAll = true;  
-      }  
-  }  
+var isCheckAll = false;  
+function swapCheck() {  
+    if (isCheckAll) {  
+        $("input[type='checkbox']").each(function() {  
+            this.checked = false;  
+        });  
+        isCheckAll = false;  
+    } else {  
+        $("input[type='checkbox']").each(function() {  
+            this.checked = true;  
+        });  
+        isCheckAll = true;  
+    }  
+}  
 
 
   var pageSize = 10;    
@@ -204,14 +204,14 @@ $(document).ready(function display(){
     });
 
    
-    $("#pageSizeSet").click(function setPageSize(){    // 设置每页显示多少条记录
-        pageSize = document.getElementById("pageSize").value;    //每页显示的记录条数
+    $("#pageSizeSet").click(function setPageSize(){    
+        pageSize = document.getElementById("pageSize").value;    
         if (!/^[1-9]\d*$/.test(pageSize)) {
             alert("请输入正整数");
             return ;
         }
         len = $("#carInfo tr").length - 1;
-        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;
         curPage = 1;       
         direct = 0;       
         displayPage();
@@ -242,7 +242,7 @@ function displayPage(){
     }
 
    
-   document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";       
+    document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";       
 
     begin = (curPage - 1) * pageSize + 1;
     end = begin + 1 * pageSize - 1;  
@@ -259,7 +259,7 @@ function displayPage(){
 
  }  
 
- function delCheck(){
+function delCheck(){
   var carCheckBox = document.getElementsByName("carCheckBox");
   var s = "";
   var checkCount = 0;
@@ -279,7 +279,7 @@ function displayPage(){
   }
  }
 
- function editCheck(){
+function editCheck(){
   var carCheckBox = document.getElementsByName("carCheckBox");
   var s = "";
   var checkCount = 0;
@@ -299,7 +299,7 @@ function displayPage(){
   }
  }
 
-  function viewCheck(){
+function viewCheck(){
   var carCheckBox = document.getElementsByName("carCheckBox");
   var s = "";
   var checkCount = 0;
@@ -318,41 +318,6 @@ function displayPage(){
     alert("请只选择一个车辆")
   }
  }
-
- // function editCheck(){
- //  var carCheckBox = document.getElementsByName("carCheckBox");
- //  var s = "";
- //  var checkCount = 0;
- //  for(var i = 0;i < carCheckBox.length;i++){
- //    if(carCheckBox[i].checked){
- //      s += carCheckBox[i].value
- //      checkCount++;
- //    }
- //  }
- //  if(checkCount == 1){
- //    document.getElementById("vin2").value = s
- //   // $.ajax({
- //   //        url:"/editCar",
- //   //        type:"post",
- //   //        data:{id:s},
- //   //        dataType:"json",
- //   //        success:function (data) {
- //   //          if(data){
- //   //            alert("传参成功!")
- //   //          }else {
- //   //            alert("传参失败!")
- //   //          }
- //   //        },
- //   //        error:function () {
- //   //          alert("操作错误!")
- //   //        }
- //   //      })
-
- //    window.open("/editCar","_self");
- //  }else{
- //    alert("请您选择一个车辆")
- //  }
- // }
 
 </script>
 </body>

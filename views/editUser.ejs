@@ -28,7 +28,7 @@
   <div class="form-group">
     <label class="col-sm-4 control-label">密码：</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control" id="updatePassword" name="updatePassword">
+      <input type="text" class="form-control" id="password" name="password">
     </div>
   </div>
 
@@ -45,40 +45,55 @@ $.getUrlParam = function (name) {
      if (r != null) return unescape(r[2]); return null;
 }                
 
-var data = $.getUrlParam('data');
-    data = JSON.parse(data);
-var id = data.id
-var username = data.username
-var password = data.password
+var username = $.getUrlParam('username')
 
-document.getElementById("id").innerHTML = id;
-document.getElementById("username").innerHTML = username;
-document.getElementById("updatePassword").value = password;
+$.ajax({
+  url: "/editUser",
+  data: {
+      username: username
+  },
+  async: true,  
+  cache: false,  
+  type: "POST",
+  dataType: "text",   
+  success: function(data){ 
+    if(data){
+      var id = JSON.parse(data)[0].id,
+          username = JSON.parse(data)[0].username,
+          password = JSON.parse(data)[0].password;
+
+          $("#id").html(id);
+          $("#username").html(username);
+          $("#password").val(password);
+      
+    }else{
+        alert("数据传输有错误！");
+    }
+  }
+})          
 
 $("#confirm").click(function() {
 
-      $.ajax({
-        url: "/updateUser",
-        data: {
-            username: username,
-            password:document.getElementById("updatePassword").value
-        },
-        async: true,  
-        cache: false,  
-        type: "POST",
-        dataType: "text",   
-        success: function(result){ 
-            if(result){
-              alert("修改成功")
-              location.href="/users";   
-            }else{
-                alert("数据传输有错误！");
-            }
+  $.ajax({
+    url: "/updateUser",
+    data: {
+        username: username,
+        password:$("#password").val()
+    },
+    async: true,  
+    cache: false,  
+    type: "POST",
+    dataType: "text",   
+    success: function(result){ 
+        if(result){
+          alert("修改成功")
+          location.href="/users";   
+        }else{
+            alert("数据传输有错误！");
         }
-      });      
-    });
-
-
+      }
+    });      
+  });
 </script>
 
 </body>

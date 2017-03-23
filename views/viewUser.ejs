@@ -37,30 +37,42 @@
 
 </form>
 
-
 <button class="btn btn-default col-sm-offset-5"><a href="/users">返回</a></button>
-
-
-
-
 <% include footer %>
+
 <script>
 $.getUrlParam = function (name) {
      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
      var r = window.location.search.substr(1).match(reg);
      if (r != null) return unescape(r[2]); return null;
-}                
+}      
 
-var data = $.getUrlParam('data');
- 	data = JSON.parse(data);
-var id = data.id
-var username = data.username
-var password = data.password
+var username = $.getUrlParam('username')
 
-document.getElementById("id").innerHTML = id;
-document.getElementById("username").innerHTML = username;
-document.getElementById("password").innerHTML = password;
+$.ajax({
+  url: "/viewUser",
+  data: {
+      username: username
+  },
+  async: true,  
+  cache: false,  
+  type: "POST",
+  dataType: "text",   
+  success: function(data){ 
+    if(data){
+      var id = JSON.parse(data)[0].id,
+          username = JSON.parse(data)[0].username,
+          password = JSON.parse(data)[0].password;
 
+          $("#id").html(id);
+          $("#username").html(username);
+          $("#password").html(password);
+      
+    }else{
+        alert("数据传输有错误！");
+    }
+  }
+})          
 </script>
 
 </body>

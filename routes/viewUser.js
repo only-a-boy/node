@@ -17,7 +17,6 @@ router.route('/viewUser')
 			var userList = JSON.stringify(result)
 			res.send(userList)
 			console.log('查看用户成功')	
-				// res.render('viewUser',{ title:'查看用户',user:userList });			
 		});
 	})
 		

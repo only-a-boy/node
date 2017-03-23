@@ -169,14 +169,14 @@ $(document).ready(function display(){
     });
 
    
-    $("#pageSizeSet").click(function setPageSize(){    // 设置每页显示多少条记录
-        pageSize = document.getElementById("pageSize").value;    //每页显示的记录条数
+    $("#pageSizeSet").click(function setPageSize(){   
+        pageSize = document.getElementById("pageSize").value;   
         if (!/^[1-9]\d*$/.test(pageSize)) {
             alert("请输入正整数");
             return ;
         }
         len = $("#userInfo tr").length - 1;
-        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;//根据记录条数，计算页数
+        page = len % pageSize == 0 ? len / pageSize : Math.floor(len / pageSize) + 1;
         curPage = 1;       
         direct = 0;       
         displayPage();
@@ -212,7 +212,6 @@ function displayPage(){
     begin = (curPage - 1) * pageSize + 1;
     end = begin + 1 * pageSize - 1;  
 
-   
     if(end > len ){
       end = len;
     }
@@ -226,7 +225,6 @@ function displayPage(){
 
 
 $("#viewClick").click(function() {
-
   var userCheckBox = document.getElementsByName("userCheckBox");
     var s = "";
     var checkCount = 0;
@@ -237,32 +235,7 @@ $("#viewClick").click(function() {
       }
     }
     if(checkCount == 1){
-
-      $.ajax({
-        url: "/viewUser",
-        data: {
-            username: s
-        },
-        async: true,  
-        cache: false,  
-        type: "POST",
-        dataType: "text",   
-        success: function(result){ 
-            if(result){
-              var data = {
-                id : JSON.parse(result)[0].id,
-                username : JSON.parse(result)[0].username,
-                password : JSON.parse(result)[0].password, 
-              };  
-              data = JSON.stringify(data);        
-              location.href="/viewUser?data="+ data;    //跳转页面传参
-            }else{
-                alert("数据传输有错误！");
-            }
-        }
-      });
-   
-     
+      location.href = "/viewUser?username=" + s;
     }else if(checkCount == 0){
       alert("您还没有选择用户")
     }else{
@@ -272,7 +245,6 @@ $("#viewClick").click(function() {
 
 
 $("#editClick").click(function() {
-
   var userCheckBox = document.getElementsByName("userCheckBox");
     var s = "";
     var checkCount = 0;
@@ -283,31 +255,7 @@ $("#editClick").click(function() {
       }
     }
     if(checkCount == 1){
-
-      $.ajax({
-        url: "/editUser",
-        data: {
-            username: s
-        },
-        async: true,  
-        cache: false,  
-        type: "POST",
-        dataType: "text",   
-        success: function(result){ 
-            if(result){
-              var data = {
-                id : JSON.parse(result)[0].id,
-                username : JSON.parse(result)[0].username,
-                password : JSON.parse(result)[0].password, 
-              };  
-              data = JSON.stringify(data);           
-              location.href="/editUser?data="+ data;    //跳转页面传参
-            }else{
-                alert("数据传输有错误！");
-            }
-        }
-      });
-      
+      location.href = "/editUser?username=" + s;   
     }else if(checkCount == 0){
       alert("您还没有选择用户")
     }else{
@@ -316,7 +264,6 @@ $("#editClick").click(function() {
   });
 
 $("#delClick").click(function() {
-
   var userCheckBox = document.getElementsByName("userCheckBox");
     var s = "";
     var checkCount = 0;
@@ -346,7 +293,6 @@ $("#delClick").click(function() {
             }
         }
       });
-      
     }else if(checkCount == 0){
       alert("您还没有选择用户")
     }else{
