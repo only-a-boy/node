@@ -38,8 +38,8 @@ $("#addUser").click(function(e) {
   $.ajax({
     url: "/addUser",
     data: {
-        username: document.getElementById("addUserName").value,
-        password: document.getElementById("addPassword").value
+        username: $("#addUserName").val(),
+        password: $("#addPassword").val()
     },
     async: true,  
     cache: false,  

@@ -16,13 +16,6 @@ router.route('/hasLogin')
 		if(req.cookies.islogin){
 			req.session.islogin = req.cookies.islogin;
 		}
-		res.render('hasLogin',{ title: '登录成功' ,user:res.locals.islogin})
+		res.render('home',{ title: '登录成功',user:res.locals.islogin})
 	})
-
-	.post(function(req,res){
-		// res.redirect('/hasLogin')
-		// res.send('登录成功')
-		console.log("登陆成功")
-		res.send(req.body);
-	});
 module.exports = router;

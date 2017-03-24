@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 	if(req.session.islogin){
 		res.locals.islogin = req.session.islogin;
 	}
-  	res.render('index', { title: 'Home !',test:res.locals.islogin });
+  	res.render('login', { title: '登录 !',test:res.locals.islogin });
 });
 
 

@@ -28,11 +28,8 @@
   </div>
 </div>
 
-
-
 <div class="panel panel-default">
   <div class="panel-heading">用户信息
-
     <div id="UserAction">
       <div class="btn-right">
           <button type="button" class="btn btn-danger" id="delClick">删除用户</button>
@@ -50,11 +47,9 @@
           <button type="button" class="btn btn-success"><a href="/addUser">新增用户</a></button>
       </div> 
     </div> 
-
   </div>
 
   <div class="panel-body">
-
     <table id="userInfo" class="table table-hover">
       <thead>
         <tr>
@@ -75,7 +70,6 @@
         <%}%>
       </tbody>
     </table>
-
   </div>
 </div>
 
@@ -132,9 +126,9 @@ $(document).ready(function display(){
     displayPage(1);
 
 
-    document.getElementById("btn0").innerHTML = "当前 " + curPage + "/" + page + " 页    每页 "
-    document.getElementById("count").innerHTML = "数据总量 " + len + "   "  
-    document.getElementById("pageSize").value = pageSize;
+    $("#btn0").html("当前 " + curPage + "/" + page + " 页    每页 ");
+    $("#count").html("数据总量 " + len + "   ");  
+    $("#pageSize").val(pageSize);
 
     $("#btn1").click(function firstPage(){    
         curPage = 1;
@@ -155,7 +149,7 @@ $(document).ready(function display(){
         displayPage();
     });
     $("#btn5").click(function changePage(){    
-        curPage = document.getElementById("changePage").value * 1;
+        curPage = $("#changePage").val() * 1;
         if (!/^[1-9]\d*$/.test(curPage)) {
             alert("请输入正整数");
             return ;
@@ -170,7 +164,7 @@ $(document).ready(function display(){
 
    
     $("#pageSizeSet").click(function setPageSize(){   
-        pageSize = document.getElementById("pageSize").value;   
+        pageSize = $("#pageSize").val();   
         if (!/^[1-9]\d*$/.test(pageSize)) {
             alert("请输入正整数");
             return ;
@@ -207,7 +201,7 @@ function displayPage(){
     }
 
    
-   document.getElementById("btn0").innerHTML="当前 " + curPage + "/" + page + " 页    每页 ";       
+   $("#btn0").html("当前 " + curPage + "/" + page + " 页    每页 ");       
 
     begin = (curPage - 1) * pageSize + 1;
     end = begin + 1 * pageSize - 1;  
@@ -225,10 +219,10 @@ function displayPage(){
 
 
 $("#viewClick").click(function() {
-  var userCheckBox = document.getElementsByName("userCheckBox");
+  var userCheckBox = $("input[name='userCheckBox']");
     var s = "";
     var checkCount = 0;
-    for(var i = 0;i < userCheckBox.length;i++){
+    for(let i = 0;i < userCheckBox.length;i++){
       if(userCheckBox[i].checked){
         s += userCheckBox[i].value
         checkCount++;
@@ -245,10 +239,10 @@ $("#viewClick").click(function() {
 
 
 $("#editClick").click(function() {
-  var userCheckBox = document.getElementsByName("userCheckBox");
+  var userCheckBox = $("input[name='userCheckBox']");
     var s = "";
     var checkCount = 0;
-    for(var i = 0;i < userCheckBox.length;i++){
+    for(let i = 0;i < userCheckBox.length;i++){
       if(userCheckBox[i].checked){
         s += userCheckBox[i].value
         checkCount++;
@@ -264,10 +258,10 @@ $("#editClick").click(function() {
   });
 
 $("#delClick").click(function() {
-  var userCheckBox = document.getElementsByName("userCheckBox");
+  var userCheckBox = $("input[name='userCheckBox']");
     var s = "";
     var checkCount = 0;
-    for(var i = 0;i < userCheckBox.length;i++){
+    for(let i = 0;i < userCheckBox.length;i++){
       if(userCheckBox[i].checked){
         s += userCheckBox[i].value
         checkCount++;

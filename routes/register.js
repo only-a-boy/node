@@ -23,7 +23,7 @@ router.route('/register')
 					if(err){
 						throw err;
 					}
-				res.render('hasRegister',{ title:'已经注册成功',user:req.body.username,password:req.body.password2});
+				res.render('register',{ title:'已经注册成功',test: res.locals.islogin });
 				console.log('注册成功')
 				});
 			}

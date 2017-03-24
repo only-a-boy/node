@@ -58,14 +58,10 @@ $.ajax({
   dataType: "text",   
   success: function(data){ 
     if(data){
-      var id = JSON.parse(data)[0].id,
-          username = JSON.parse(data)[0].username,
-          password = JSON.parse(data)[0].password;
-
-          $("#id").html(id);
-          $("#username").html(username);
-          $("#password").val(password);
-      
+      var [id,username,password] = [JSON.parse(data)[0].id,JSON.parse(data)[0].username,JSON.parse(data)[0].password]
+      $("#id").html(id);
+      $("#username").html(username);
+      $("#password").val(password);    
     }else{
         alert("数据传输有错误！");
     }
