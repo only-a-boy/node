@@ -23,15 +23,15 @@ router.route('/login')
 		client = sql.connect();
 		sql.selectUser(client,req.body.username,function(result){
 			if(result[0] === undefined){
-				res.send('没有该用户');
+				res.send("false1");
 			}else{
 				if(result[0].password === req.body.password){
 					req.session.islogin = req.body.username;
 					res.locals.islogin = req.session.islogin;
 					res.cookie('islogin'),res.locals.islogin,{maxAge:60000};
-					res.render('home',{ title : '首页',user:res.locals.islogin})
+					res.send("true")
 				}else{
-					res.send('密码错误')
+					res.send("false2")
 				}
 			}
 		})

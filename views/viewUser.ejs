@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" href="/stylesheets/basic.css">
 	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/viewUser.css">
@@ -42,9 +43,12 @@
 
 <script>
 $.getUrlParam = function (name) {
-     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if (r != null) return unescape(r[2]); return null;
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null){
+    return decodeURI(r[2]);
+  }
+  return null;
 }      
 
 var username = $.getUrlParam('username')
@@ -60,7 +64,7 @@ $.ajax({
   dataType: "text",   
   success: function(data){ 
     if(data){
-      var [id,username,password] = [JSON.parse(data)[0].id,JSON.parse(data)[0].username,JSON.parse(data)[0].password]
+      var {id,username,password} = JSON.parse(data)[0]
       $("#id").html(id);
       $("#username").html(username);
       $("#password").html(password);     

@@ -7,27 +7,17 @@ var mysql = require('mysql');
 var sql = require('dao/dbConnect');
 // var sql = require('./routes/dao/dbConnect');
 
-/* GET users listing. */
 router.route('/users')
 	.get(function(req,res){
-		client = sql.connect();
-		sql.selectAllUsers(client,function(result){
-			var usersList = JSON.stringify(result)
-			console.log(usersList);
-			res.render('users',{ title:'这里是GET用户中心',user:usersList })		
-		})
+		res.render('users',{title:"这里是GET用户中心"})
 	})
 
 	.post(function(req,res){
 		client = sql.connect();
-		sql.selectAllUsers(client,function(result){
-			if(result[0] === undefined){
-				res.send('没有任何用户');
-			}else{
-				var usersList = JSON.stringify(result)
-				console.log(usersList);
-				res.render('users',{ title:'这里是POST用户中心',user:usersList })
-			}
+		sql.selectAllUsers(client,function(result){			
+			var usersList = JSON.stringify(result)
+			console.log(usersList);
+			res.send(usersList);			
 		})
 	})
 
