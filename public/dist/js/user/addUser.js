@@ -1,1 +1,1 @@
-"use strict";$("#addUser").click(function(a){a.preventDefault(),$.ajax({url:"/addUser",data:{username:$("#addUserName").val(),password:$("#addPassword").val()},async:!0,cache:!1,type:"POST",dataType:"text",success:function(a){"true"==a?(alert("新增用户成功"),location.href="/users"):"false1"==a?alert("用户名不能为空"):alert("已有此用户名")}})});
+"use strict";

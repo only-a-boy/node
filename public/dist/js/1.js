@@ -1,1 +1,0 @@
-"use strict";input.map(function(t){return t+1});

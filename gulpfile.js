@@ -36,15 +36,6 @@ gulp.task('convertCarJS', function(){
     .pipe(gulp.dest('public/dist/js/car'))
 })
 
-// gulp.task('convertAppJS', function(){
-//   return gulp.src('public/dist/js/bundle.js')
-//     .pipe(babel({
-//       presets: ['es2015']
-//     }))
-//     .pipe(uglify())
-//     .pipe(gulp.dest('public/dist/app/js'))
-// })
-
 
 // 合并并压缩css
 gulp.task('convertCSS', function(){
@@ -71,7 +62,7 @@ gulp.task('watch', function(){
   gulp.watch('public/javascripts/proto/*.js', ['convertJS', 'browserify']);
   gulp.watch('public/javascripts/proto/user/*.js', ['convertUserJS', 'browserify']);
   gulp.watch('public/javascripts/proto/car/*.js', ['convertCarJS', 'browserify']);
-  // gulp.watch('public/dist/js/bundle.js', ['convertAppJS', 'browserify']);
+  gulp.watch(['public/dist/js/*.js', 'public/dist/js/**/*.js'], ['bundle', 'browserify']);
   gulp.watch('public/dist/*.html', ['convertJS']);
 })
 
