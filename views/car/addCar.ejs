@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/stylesheets/basic.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<script src="javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+	<title><%= title %></title>
+</head>
+</head>
+<body>
+<% include ../header %>
+<h1>这里是车辆新增页面</h1>
+
+<form>
+  <div class="form-group">
+    <label for="addVin">Vin(不能为空)</label>
+    <input type="text" class="form-control" id="addVin" name="addVin" placeholder="Vin" required="required">
+  </div>
+  <div class="form-group">
+    <label for="addEngineNo">发动机号：</label>
+    <input type="text" class="form-control" id="addEngineNo" name="addEngineNo" placeholder="Engine_No">
+  </div>
+  <div class="form-group">
+    <label for="addModel">车型：</label>
+    <input type="text" class="form-control" id="addModel" name="addModel" placeholder="Model">
+  </div>
+  <div class="form-group">
+    <label for="addColor">颜色：</label>
+    <input type="text" class="form-control" id="addColor" name="addColor" placeholder="Color">
+  </div>
+  <div class="form-group">
+    <label for="addAddress">地址：</label>
+    <input type="text" class="form-control" id="addAddress" name="addAddress" placeholder="address">
+  </div>
+  <div class="form-group">
+    <label for="addCarCard">车牌号：</label>
+    <input type="text" class="form-control" id="addCarCard" name="addCarCard" placeholder="Car_card">
+  </div>
+  <div class="form-group">
+    <label for="addCityName">城市名：</label>
+    <input type="text" class="form-control" id="addCityName" name="addCityName" placeholder="City_name">
+  </div>
+  <div class="form-group">
+    <label for="addModelYear">新产品年度：</label>
+    <input type="text" class="form-control" id="addModelYear" name="addModelYear" placeholder="Model_year">
+  </div>
+  <div class="form-group">
+    <label for="addPurchaseDate">购车日期：</label>
+    <input type="text" class="form-control" id="addPurchaseDate" name="addPurchaseDate" placeholder="Purchase_date">
+  </div>
+  <div class="form-group">
+    <label for="addCarType">车辆类型：</label>
+    <input type="text" class="form-control" id="addCarType" name="addCarType" placeholder="Car_type">
+  </div>
+  <div class="form-group">
+    <label for="addMemo">备注：</label>
+    <input type="text" class="form-control" id="addMemo" name="addMemo" placeholder="Memo">
+  </div>
+  <div class="form-group">
+    <label for="addStatus">状态：</label>
+    <input type="text" class="form-control" id="addStatus" name="addStatus" placeholder="Status">
+  </div>
+  <div class="form-group">
+    <label for="addCreateUserId">创建人：</label>
+    <input type="text" class="form-control" id="addCreateUserId" name="addCreateUserId" placeholder="Create_user_id">
+  </div>
+  <div class="form-group">
+    <label for="addCreateTime">创建时间：</label>
+    <input type="text" class="form-control" id="addCreateTime" name="addCreateTime" placeholder="Create_time">
+  </div>
+
+
+  <button type="button" class="btn btn-default" id="addCar">确定</button>
+</form>
+
+<% include ../footer %>
+
+<script src="bundle.js"></script>
+
+</body>
+</html>

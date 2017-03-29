@@ -7,25 +7,33 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/user/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var hasLogin = require('./routes/hasLogin');
-var car = require('./routes/car');
+var car = require('./routes/car/car');
 var home = require('./routes/home');
-var editUser = require('./routes/editUser');
-var editCar = require('./routes/editCar');
-var addCar = require('./routes/addCar');
-var addUser = require('./routes/addUser');
-var viewCar = require('./routes/viewCar');
-var viewUser = require('./routes/viewUser');
-var deleteUser = require('./routes/deleteUser');
-var deleteCar = require('./routes/deleteCar');
-var updateCar = require('./routes/updateCar');
-var updateUser = require('./routes/updateUser');
-var selectUser = require('./routes/selectUser');
-var selectCar = require('./routes/selectCar');
-
+var editUser = require('./routes/user/editUser');
+var editCar = require('./routes/car/editCar');
+var addCar = require('./routes/car/addCar');
+var addUser = require('./routes/user/addUser');
+var viewCar = require('./routes/car/viewCar');
+var viewUser = require('./routes/user/viewUser');
+var deleteUser = require('./routes/user/deleteUser');
+var deleteCar = require('./routes/car/deleteCar');
+var updateCar = require('./routes/car/updateCar');
+var updateUser = require('./routes/user/updateUser');
+var selectUser = require('./routes/user/selectUser');
+var selectCar = require('./routes/car/selectCar');
+// var jquery = require('./public/javascripts/jquery-3.1.1.min.js');
+// var userJS = require('./public/dist/js/user/user');
+// var addUserJS = require('./public/dist/js/user/addUser');
+// var editUserJS = require('./public/dist/js/user/editUser');
+// var viewUserJS = require('./public/dist/js/user/viewUser');
+// var carJS = require('./public/dist/js/car/car');
+// var addCarJS = require('./public/dist/js/car/addCar');
+// var editCarJS = require('./public/dist/js/car/editCar');
+// var viewCarJS = require('./public/dist/js/car/viewCar');
 
 
 var app = express();
@@ -68,6 +76,15 @@ app.use('/',updateCar);
 app.use('/',updateUser);
 app.use('/',selectUser);
 app.use('/',selectCar);
+// app.use('/',jquery);
+// app.use('/',userJS);
+// app.use('/',addUserJS);
+// app.use('/',editUserJS);
+// app.use('/',viewUserJS);
+// app.use('/',carJS);
+// app.use('/',addCarJS);
+// app.use('/',editCarJS);
+// app.use('/',viewCarJS);
 
 
 app.use(function(req, res, next) {
