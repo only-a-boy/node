@@ -1,1 +1,1 @@
-"use strict";
+"use strict";$("#login").click(function(e){e.preventDefault(),$.ajax({url:"/login",type:"POST",data:{username:$("#logUsername").val(),password:$("#logPassword").val()},async:!0,cache:!1,dataType:"text",success:function(e){"false1"==e&&alert("没有此用户"),"false2"==e&&alert("密码错误"),"true"==e&&(location.href="/home")}})}),$("#register").click(function(){location.href="/register"});

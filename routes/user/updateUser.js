@@ -11,11 +11,12 @@ router.route('/updateUser')
 	.post(function(req,res){
 		client = sql.connect();
 		sql.updateUser(client,req.body.username,req.body.password,function(err){
-				if(err){
-					res.send(false)
-				}else{
-					res.send(true)
-				}
+				// if(err){
+				// 	res.send("falseUser")
+				// }else{
+				// 	res.send("trueUser")
+				// }
+				res.send("true")
 			})	
 		})
 

@@ -1,3 +1,7 @@
 #viewCarBack{
 	float:right;
 }
+
+.btn-default a{
+	color:black;
+}

@@ -49,9 +49,10 @@ gulp.task('convertCSS', function(){
 })
 
 gulp.task('bundle', function(){
-  return gulp.src(['public/dist/js/*.js', 'public/dist/js/**/*.js'])
+  // return gulp.src(['public/dist/js/*.js', 'public/dist/js/**/*.js'])
+  return gulp.src(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'])
       .pipe(concat("bundle.min.js"))
-      .pipe(uglify("bundle.min.js"))
+      // .pipe(uglify("bundle.min.js"))
       .pipe(gulp.dest('public'));
 });
 
@@ -63,18 +64,19 @@ gulp.task('watch', function(){
   gulp.watch('public/javascripts/proto/user/*.js', ['convertUserJS', 'browserify']);
   gulp.watch('public/javascripts/proto/car/*.js', ['convertCarJS', 'browserify']);
   gulp.watch(['public/dist/js/*.js', 'public/dist/js/**/*.js'], ['bundle', 'browserify']);
+  gulp.watch(['appJS.js'], ['browserify']);
   gulp.watch('public/dist/*.html', ['convertJS']);
 })
 
 //browserify
 gulp.task("browserify", function () {
     var b = browserify({
-        entries: "app.js"
+        entries: "appJS.js"
     });
 
     return b.bundle()
         .pipe(source("bundle.js"))
-        .pipe(gulp.dest("public/app/js"));
+        .pipe(gulp.dest("public"));
 });
 
 

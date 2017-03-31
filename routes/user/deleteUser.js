@@ -14,7 +14,7 @@ router.route('/delUser')
 			if(err){
 				res.send(err)
 			}else{
-				res.send(true)
+				res.send("trueUser")
 			}
 		})
 	})

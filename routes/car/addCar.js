@@ -19,13 +19,13 @@ router.route('/addCar')
 				client = sql.connect();
 				sql.insertCarInfo(client,req.body.addVin,req.body.addEngineNo,req.body.addModel,req.body.addColor,req.body.addAddress,req.body.addCarCard,req.body.addCityName,req.body.addModelYear,req.body.addPurchaseDate,req.body.addCarType,req.body.addMemo,req.body.addStatus,req.body.addCreateUserId,req.body.addCreateTime,function(err){
 					if(err){
-						res.send("false1")
+						res.send("err")
 					}else{
 						res.send("true")
 					}
 				})	
 			}else{
-				res.send("false2")
+				res.send("false")
 			}
 		})
 	});

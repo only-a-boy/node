@@ -9,10 +9,10 @@ var sql = require('dao/dbConnect');
 
 router.post('/selectCar',function(req,res){
 	client = sql.connect();
-	sql.queryCarInfo(client,req.body.selectVin,req.body.selectEngineNo,req.body.selectModel,req.body.selectColor,function(result){	
-		var carsList = JSON.stringify(result)
-		console.log(carsList);
-		res.render('car/car',{ title:'车辆信息',car:carsList })		
+	sql.queryCarInfo(client,req.body.vin,req.body.engineNo,req.body.model,req.body.color,function(result){	
+		var carList = JSON.stringify(result)
+		console.log(carList);
+		res.send(carList)		
 	})
 })
 

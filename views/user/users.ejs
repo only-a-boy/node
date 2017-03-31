@@ -2,12 +2,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/users.css">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/basic.css">
-	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
- 	<script src="/javascripts/jquery-3.1.1.min.js"></script>
-  <script src="/javascripts/bootstrap.min.js"></script>
-  <script src="/javascripts/vue.js"></script>
 	<title><%= title %></title>
 </head>
 </head>
@@ -18,15 +12,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">用户搜索</div>
   <div class="panel-body">
-
-    <form action="/selectUser" method="POST">
-      <div class="input-group col-sm-4 col-sm-offset-4">
-        <span id="sizing-addon2">用户名：</span>
-        <input type="text" class="form-control" style="width:60%;border-radius:5px;" id="selectUser" name="selectUser" placeholder="Username" aria-describedby="sizing-addon2">
-      </div>
-      <button type="submit" class="btn col-sm-1 btn-primary" style="float:right;margin-right:80px;">用户查询</button>
-    </form>
-
+  <div class="input-group col-sm-4 col-sm-offset-4">
+    <span id="sizing-addon2">用户名：</span>
+    <input type="text" class="form-control" style="width:60%;border-radius:5px;" id="selectUser" placeholder="Username" aria-describedby="sizing-addon2">
+  </div>
+  <button type="button" id="selUserBtn" class="btn col-sm-1 btn-primary" style="float:right;margin-right:80px;">用户查询</button>
   </div>
 </div>
 
@@ -34,15 +24,15 @@
   <div class="panel-heading">用户信息
     <div id="UserAction">
       <div class="btn-right">
-          <button type="button" class="btn btn-danger" id="delClick">删除用户</button>
+          <button type="button" class="btn btn-danger" id="delUserClick">删除用户</button>
       </div>
 
       <div class="btn-right">
-          <button type="button" class="btn btn-warning" id="editClick">修改信息</button>
+          <button type="button" class="btn btn-warning" id="editUserClick">修改信息</button>
       </div>
 
       <div class="btn-right">
-          <button type="button" class="btn btn-info" id="viewClick">查看详情</button>
+          <button type="button" class="btn btn-info" id="viewUserClick">查看详情</button>
       </div>
 
       <div class="btn-right">
@@ -68,24 +58,24 @@
   </div>
 </div>
 
-<ul id="paging">
-  <a id="btn0"></a>
-  <input id="pageSize" type="text" size="1" maxlength="4" value="getDefaultValue()"/><a> 条 </a> <a href="#" id="pageSizeSet">设置</a> 
-  <a id="count"></a> 
-  <a href="#" id="btn1">首页</a>
-  <a href="#" id="btn2">上一页</a>
-  <a href="#" id="btn3">下一页</a>
-  <a href="#" id="btn4">尾页</a> 
+<ul class="paging">
+  <a id="btn00"></a>
+  <input id="pageSize0" type="text" size="1" maxlength="4" value="getDefaultValue()"/><a> 条 </a> <a href="#" id="pageSizeSet0">设置</a> 
+  <a id="count0"></a> 
+  <a href="#" id="btn01">首页</a>
+  <a href="#" id="btn02">上一页</a>
+  <a href="#" id="btn03">下一页</a>
+  <a href="#" id="btn04">尾页</a> 
   <a>转到 </a>
-  <input id="changePage" type="text" size="1" maxlength="4"/>
+  <input id="changePage0" type="text" size="1" maxlength="4"/>
   <a>页 </a>
-  <a href="#" id="btn5">跳转</a>
+  <a href="#" id="btn05">跳转</a>
 </ul>
 
 
 <% include ../footer %>
 
-<script src="bundle.js"></script>
+<script src="bundle.min.js"></script>
 
 </body>
 </html>

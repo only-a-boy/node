@@ -1,12 +1,3 @@
-$.getUrlParam = function (name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-  var r = window.location.search.substr(1).match(reg);
-  if (r != null){
-    return decodeURI(r[2]);
-  }
-  return null;
-}      
-
 var vin = $.getUrlParam('vin') 
 $.ajax({
   url:"/editCar",
@@ -41,7 +32,7 @@ $.ajax({
   }
 })
 
-$("#confirm").click(function(){
+$("#confirmCar").click(function(){
   $.ajax({
     url:"/updateCar",
     type:"POST",
@@ -66,7 +57,7 @@ $("#confirm").click(function(){
     cache:false,
     dataType:"text",
     success:function(data){
-      if(data){
+      if(data == "true"){
         alert("修改车辆信息成功")
         location.href = "/car"
       }

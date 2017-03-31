@@ -9,10 +9,10 @@ var sql = require('dao/dbConnect');
 
 router.post('/selectUser',function(req,res){
 	client = sql.connect();
-	sql.selectUser(client,req.body.selectUser,function(result){	
-		var usersList = JSON.stringify(result)
-		console.log(usersList);
-		res.render('user/users',{ title:'这里是POST用户中心',user:usersList })		
+	sql.selectUser(client,req.body.username,function(result){	
+		var userList = JSON.stringify(result)
+		console.log(userList);
+		res.send(userList)		
 	})
 })
 
