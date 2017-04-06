@@ -16,14 +16,14 @@ router.route('/register')
 		client = sql.connect();
 		sql.selectUser(client,req.body.username,function(result){
 			if(result[0] != undefined){
-				res.send('该用户名已经被使用');
+				res.send('false1');
 			}else{
 				client = sql.connect();
-				sql.insertUser(client,req.body.username,req.body.password2,function(err){
+				sql.insertUser(client,req.body.username,req.body.password,function(err){
 					if(err){
 						throw err;
 					}
-				res.render('register',{ title:'已经注册成功',test: res.locals.islogin });
+				res.send("true")
 				console.log('注册成功')
 				});
 			}

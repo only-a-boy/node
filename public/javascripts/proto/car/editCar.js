@@ -27,7 +27,7 @@ $.ajax({
       $("#createUserId").val(create_user_id)
       $("#createTime").val(create_time)
     }else{
-      alert("数据传输错误！")
+      alert("数据传输有错误!")
     }
   }
 })

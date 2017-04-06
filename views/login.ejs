@@ -2,43 +2,41 @@
 <html>
 <head>
 	<title><%= title %></title>
+  <script src="/javascripts/jquery-3.1.1.min.js"></script>
+  <script src="/javascripts/proto/login.js"></script>
+  <!-- <script src="bundle.min.js"></script> -->
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  
 </head>
-<body>
-<%- include header %>
+<body class="login-a">
+
 <div class="container">
-    <form id="formLogin" class="col-sm-offset-4 col-sm-4 form-horizontal">
-        <fieldset>
-        <% if(locals.islogin) { %>
-           <h1>用户已经登陆。<h1><br>
-          <a class="btn" href="/logout">登出</a>
-            <% } else{ %>
-            <h1>请登录</h1>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="username">用户名</label>
-              <div class="col-sm-9">
-                  <input type="text" class="form-control" id="logUsername" name="username" placeholder="用户名" required>
-              </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-3 control-label" for="password">密码</label>
-            <div class="col-sm-9">
-                <input type="password" class="form-control" id="logPassword" name="password" placeholder="密码" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
-              <button id="login" type="button" class="btn btn-primary">登录</button> 
-              <button id="register" type="button" class="btn btn-primary col-sm-offset-5">注册</button>
-            </div>
-          </div>
-        <% } %>
-      </fieldset>
+  <section class="content">
+    <form>
+      <h1>Login</h1>
+      <div>
+        <input type="text" placeholder="Username" id="logUsername" class="username"/>
+      </div>
+      <div>
+        <input type="password" placeholder="Password" id="logPassword" class="password"/>
+      </div>
+      <div>
+        <input type="button" value="登  录" id="login">
+        <a href="#">忘记密码?</a>
+        <a href="/register">注册</a>
+      </div>
     </form>
+    <div class="button">
+      <a href="#">Download source file</a>
+    </div>
+  </section>
 </div>
-<%- include footer %>
 
-<script src="bundle.min.js"></script>
+
+
 
 </body>
 </html>
+
+
+

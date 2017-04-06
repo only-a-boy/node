@@ -36,7 +36,7 @@ $("#selCarBtn").click(function(){
         $("#carData").html(tmp);
         showInfoList("#carInfo tr","#btn0","#btn1","#btn2","#btn3","#btn4","#btn5","#count","#pageSize","#pageSizeSet","#changePage");
       }else{
-        alert("数据传输有错误！")
+        alert("数据传输有错误!")
       }
     }
   })

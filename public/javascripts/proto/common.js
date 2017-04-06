@@ -7,6 +7,22 @@ $.getUrlParam = function (name) {
   return null;
 }      
 
+var isCheckAll = false;  
+function swapCheck() {  
+    if (isCheckAll) {  
+        $("input[type='checkbox']").each(function() {  
+            this.checked = false;  
+        });  
+        isCheckAll = false;  
+    }else{  
+        $("input[type='checkbox']").each(function() {  
+            this.checked = true;  
+        });  
+      isCheckAll = true;  
+    }  
+}  
+
+
 function showList(id,btn0,btn1,btn2,btn3,btn4,btn5,count,pageSizeNo,pageSizeSet,changePageNo){
   var pageSize = 10;    
   var curPage = 0;        

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function Car(){
   $.ajax({
     url:"/car",
     async:true,
@@ -29,9 +29,8 @@ $(document).ready(function(){
         `}
         $("#carData").html(tmp);
         showInfoList("#carInfo tr","#btn0","#btn1","#btn2","#btn3","#btn4","#btn5","#count","#pageSize","#pageSizeSet","#changePage");
-        // showInfoList();
       }else{
-        alert("数据传输有错误！")
+        alert("数据传输有错误!")
       }
     }
   })
@@ -62,7 +61,7 @@ $("#delCarClick").click(function(){
               alert("删除车辆成功")
               location.href="/car" 
             }else{
-                alert("数据传输有错误！");
+                alert("数据传输有错误!");
             }
         }
       });
@@ -112,20 +111,6 @@ $("#viewCarClick").click(function(){
 })
 
 
-var isCheckAll = false;  
-function swapCheck() {  
-    if (isCheckAll) {  
-        $("input[type='checkbox']").each(function() {  
-            this.checked = false;  
-        });  
-        isCheckAll = false;  
-    }else{  
-        $("input[type='checkbox']").each(function() {  
-            this.checked = true;  
-        });  
-      isCheckAll = true;  
-    }  
-}  
 
 
 

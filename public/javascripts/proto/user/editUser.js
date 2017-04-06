@@ -37,7 +37,7 @@ $("#confirmUser").click(function() {
           alert("修改成功")
           location.href="/users";   
         }else{
-            alert("数据传输有错误！");
+            alert("数据传输有错误!");
         }
       }
     });      

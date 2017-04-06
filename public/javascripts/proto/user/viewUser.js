@@ -16,7 +16,7 @@ $.ajax({
       $("#username").html(username);
       $("#password").html(password);     
     }else{
-        alert("数据传输有错误！");
+        alert("数据传输有错误");
     }
   }
 })          

@@ -21,7 +21,7 @@ $(document).ready(function(){
         $("#userData").html(tmp);
         showInfoList("#userInfo tr","#btn00","#btn01","#btn02","#btn03","#btn04","#btn05","#count0","#pageSize0","#pageSizeSet0","#changePage0");
       }else{
-        alert("数据传输有错误！")
+        alert("数据传输有错误!")
       }
     }
   })
@@ -93,7 +93,7 @@ $("#delUserClick").click(function() {
               alert("删除用户成功")
               location.href="/users" 
             }else{
-                alert("数据传输有错误！");
+                alert("数据传输有错误!");
             }
         }
       });

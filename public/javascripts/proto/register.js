@@ -1,33 +1,30 @@
 $(document).ready(function(){
-  $("#login").click(function(e){
+  $("#register").click(function(e){ 
     e.preventDefault();
-    if($("#logUsername").val() == ""){
+    if($("#RegUsername").val() == ""){
       alert("用户名不能为空")
     }else{
+
       $.ajax({
-        url:"/login",
+        url:"/register",
         type:"POST",
         data:{
-          username: $("#logUsername").val(),
-          password: $("#logPassword").val()
+          username: $("#RegUsername").val(),
+          password: $("#RegPassword").val()
         },
         async:true,
         cache:false,
         dataType:"text",
         success:function(data){
           if(data == "false1"){
-            alert("没有此用户")
-          }
-          if(data == "false2"){
-            alert("密码错误")
+            alert("此用户名已经被使用")
           }
           if(data == "true"){
-            location.href="/home"    
+            alert("注册成功")
+            location.href="/login"    
           }
         }
       })
-    }
-   
+    } 
   })
-
 })

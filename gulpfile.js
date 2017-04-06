@@ -48,11 +48,17 @@ gulp.task('convertCSS', function(){
     .pipe(gulp.dest('public/dist/css'));
 })
 
+// gulp.task('bundle', function(){
+//   return gulp.src(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'])
+//       .pipe(concat("bundle.min.js"))
+//       //       .pipe(uglify("bundle.min.js"))
+//       .pipe(gulp.dest('public'));
+// });
+
 gulp.task('bundle', function(){
-  // return gulp.src(['public/dist/js/*.js', 'public/dist/js/**/*.js'])
-  return gulp.src(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'])
+  return gulp.src(['public/dist/js/*.js', 'public/dist/js/**/*.js'])
       .pipe(concat("bundle.min.js"))
-      // .pipe(uglify("bundle.min.js"))
+      .pipe(uglify("bundle.min.js"))
       .pipe(gulp.dest('public'));
 });
 
