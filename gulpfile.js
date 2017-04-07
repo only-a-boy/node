@@ -48,12 +48,12 @@ gulp.task('convertCSS', function(){
     .pipe(gulp.dest('public/dist/css'));
 })
 
-// gulp.task('bundle', function(){
-//   return gulp.src(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'])
-//       .pipe(concat("bundle.min.js"))
-//       //       .pipe(uglify("bundle.min.js"))
-//       .pipe(gulp.dest('public'));
-// });
+gulp.task('bundle1', function(){
+  return gulp.src(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'])
+      .pipe(concat("bundle.js"))
+      //       .pipe(uglify("bundle.min.js"))
+      .pipe(gulp.dest('public'));
+});
 
 gulp.task('bundle', function(){
   return gulp.src(['public/dist/js/*.js', 'public/dist/js/**/*.js'])
@@ -69,6 +69,7 @@ gulp.task('watch', function(){
   gulp.watch('public/javascripts/proto/*.js', ['convertJS', 'browserify']);
   gulp.watch('public/javascripts/proto/user/*.js', ['convertUserJS', 'browserify']);
   gulp.watch('public/javascripts/proto/car/*.js', ['convertCarJS', 'browserify']);
+  gulp.watch(['public/javascripts/proto/**/*.js','public/javascripts/proto/*.js'], ['bundle1', 'browserify']);
   gulp.watch(['public/dist/js/*.js', 'public/dist/js/**/*.js'], ['bundle', 'browserify']);
   gulp.watch(['appJS.js'], ['browserify']);
   gulp.watch('public/dist/*.html', ['convertJS']);
@@ -81,9 +82,9 @@ gulp.task("browserify", function () {
     });
 
     return b.bundle()
-        .pipe(source("bundle.js"))
+        .pipe(source("appJS.js"))
         .pipe(gulp.dest("public"));
 });
 
 
-gulp.task('start', ['convertJS', 'convertUserJS','convertCarJS','convertCSS', 'bundle', 'watch']);
+gulp.task('start', ['convertJS', 'convertUserJS','convertCarJS','convertCSS' ,'bundle1','bundle', 'watch']);
