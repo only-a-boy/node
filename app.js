@@ -10,7 +10,6 @@ var index = require('./routes/index');
 var users = require('./routes/user/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
-var hasLogin = require('./routes/hasLogin');
 var car = require('./routes/car/car');
 var home = require('./routes/home');
 var editUser = require('./routes/user/editUser');
@@ -25,15 +24,6 @@ var updateCar = require('./routes/car/updateCar');
 var updateUser = require('./routes/user/updateUser');
 var selectUser = require('./routes/user/selectUser');
 var selectCar = require('./routes/car/selectCar');
-// var jquery = require('./public/javascripts/jquery-3.1.1.min.js');
-// var userJS = require('./public/dist/js/user/user');
-// var addUserJS = require('./public/dist/js/user/addUser');
-// var editUserJS = require('./public/dist/js/user/editUser');
-// var viewUserJS = require('./public/dist/js/user/viewUser');
-// var carJS = require('./public/dist/js/car/car');
-// var addCarJS = require('./public/dist/js/car/addCar');
-// var editCarJS = require('./public/dist/js/car/editCar');
-// var viewCarJS = require('./public/dist/js/car/viewCar');
 
 
 var app = express();
@@ -61,7 +51,6 @@ app.use('/',index);
 app.use('/',users);
 app.use('/',login);
 app.use('/',register);
-app.use('/',hasLogin);
 app.use('/',car);
 app.use('/',home);
 app.use('/',editUser);
@@ -76,15 +65,6 @@ app.use('/',updateCar);
 app.use('/',updateUser);
 app.use('/',selectUser);
 app.use('/',selectCar);
-// app.use('/',jquery);
-// app.use('/',userJS);
-// app.use('/',addUserJS);
-// app.use('/',editUserJS);
-// app.use('/',viewUserJS);
-// app.use('/',carJS);
-// app.use('/',addCarJS);
-// app.use('/',editCarJS);
-// app.use('/',viewCarJS);
 
 
 app.use(function(req, res, next) {

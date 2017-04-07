@@ -97,7 +97,7 @@ window.onload = function() {
 	}
 	for(var i = 0;i < buttons.length;i++){
 		(function(i){
-			buttons[i].onclick = function(){
+			buttons[i].onmouseover = function(){
 				var clickIndex = parseInt(this.getAttribute("index"));
 				var range = 1300 * (index - clickIndex)
 				index = clickIndex;

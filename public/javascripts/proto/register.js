@@ -1,8 +1,8 @@
 $(document).ready(function(){
   $("#register").click(function(e){ 
     e.preventDefault();
-    if($("#RegUsername").val() == ""){
-      alert("用户名不能为空")
+    if($("#RegUsername").val() == "" || $("#RegPassword").val() == ""){
+      alert("用户名或者密码不能为空")
     }else{
 
       $.ajax({
